@@ -6,6 +6,7 @@ public abstract class RunningTask {
 
     private String name;
     public AtomicBoolean blocked = new AtomicBoolean();
+    protected Object lock = new Object();
 
     public RunningTask(String name) {
         this.name = name;

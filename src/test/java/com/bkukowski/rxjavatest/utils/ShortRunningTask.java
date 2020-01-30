@@ -7,11 +7,11 @@ public class ShortRunningTask extends RunningTask {
     }
 
     @Override
-    public synchronized void runInnerTask() {
-        synchronized (this) {
+    public void runInnerTask() {
+        synchronized (lock) {
             blocked.set(true);
             CommonValue.atomicInteger.set(1);
-            System.out.println("ShortRunningTask" + getName() + ": Hey! from thread: " + Thread.currentThread().getName() + " AtomicInteger=" + CommonValue.atomicInteger.get());
+//            System.out.println("ShortRunningTask" + getName() + ": Hey! from thread: " + Thread.currentThread().getName() + " AtomicInteger=" + CommonValue.atomicInteger.get());
 
         }
         System.out.println("ShortRunningTask" + getName() + ": Hey! from thread: " + Thread.currentThread().getName());
